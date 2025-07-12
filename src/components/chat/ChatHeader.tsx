@@ -1,15 +1,24 @@
-import { Trash2, Bot, Sparkles } from "lucide-react";
+import { Trash2, Bot, Sparkles, Menu } from "lucide-react";
 import { Button } from "../ui/button";
 
 interface ChatHeaderProps {
   onClearChat: () => void;
   messageCount: number;
+  onOpenHistory: () => void;
 }
 
-export const ChatHeader = ({ onClearChat, messageCount }: ChatHeaderProps) => {
+export const ChatHeader = ({ onClearChat, messageCount, onOpenHistory }: ChatHeaderProps) => {
   return (
     <div className="flex items-center justify-between p-6 bg-gradient-to-r from-slate-900/80 to-purple-900/80 backdrop-blur-xl border-b border-white/10">
       <div className="flex items-center gap-4">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onOpenHistory}
+          className="text-slate-300 hover:text-white hover:bg-white/10 p-2 lg:hidden"
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
         <div className="relative">
           <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 shadow-lg shadow-purple-500/25 animate-float">
             <Bot className="h-6 w-6 text-white" />
